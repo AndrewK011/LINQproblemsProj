@@ -19,6 +19,9 @@ namespace LINQproblems
              "73,88,83,99,64",
              "98,100,66,74,55"
             };
+            string letterFrequency = "Terrill";
+
+
 
             Strings s = new Strings();
 
@@ -31,6 +34,8 @@ namespace LINQproblems
             Console.WriteLine(s.ReturnAverageOfStringList(classGrades));
             Console.ReadLine();
 
+            Console.WriteLine(s.LetterFrequencyInString(letterFrequency));
+            Console.ReadLine();
         }
     }
 }

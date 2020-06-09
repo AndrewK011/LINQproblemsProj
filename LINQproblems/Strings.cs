@@ -12,9 +12,9 @@ namespace LINQproblems
         {
             List<string> newList = new List<string>();
 
-            foreach(var word in listParam)
+            foreach (var word in listParam)
             {
-                if(word.Contains("th"))
+                if (word.Contains("th"))
                 {
                     newList.Add(word);
                 }
@@ -31,7 +31,7 @@ namespace LINQproblems
             Console.ReadLine();
         }
 
-        public IEnumerable<string> ReturnListMinusDuplicateStrings(List<string> listParam)
+        public IEnumerable<string> ReturnListMinusDuplicateStrings(IEnumerable<string> listParam)
         {
             IEnumerable<string> enumerable = listParam.Distinct();
 
@@ -77,6 +77,27 @@ namespace LINQproblems
                 }
             }
             return convertedList;
+        }
+
+        public string LetterFrequencyInString(string stringParam)
+        {
+            string returnString = "";
+            List<char> stringList = new List<char>();
+
+            stringParam = stringParam.ToUpper();
+            stringList = stringParam.ToList();
+            stringList.Sort();
+            for (int i = 0; i < stringList.Count; i++)
+            {
+                int result = stringParam.ToCharArray().Count(x => x == stringList[i]);
+                if (result > 1)
+                {
+                    i += result - 1;
+                }
+                    returnString += result;
+                    returnString += stringList[i];
+            }
+            return returnString;
         }
 
     }
