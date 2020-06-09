@@ -37,5 +37,47 @@ namespace LINQproblems
 
             return enumerable;
         }
+
+        public double ReturnAverageOfStringList(List<string> listParam)
+        {
+            List<string> newList;
+            List<double> studentAverageList = new List<double>();
+            List<double> overallAverageList = new List<double>();
+            string[] splitString;
+
+            foreach (string gradeSet in listParam)
+            {
+                splitString = gradeSet.Split(',');
+                newList = splitString.ToList();
+
+                studentAverageList = ConvertStringListToDoubleList(newList);
+                RemoveLowestValueInList(studentAverageList);
+                overallAverageList.Add(studentAverageList.Average());
+            }
+
+
+            return overallAverageList.Average();
+        }
+
+        public void RemoveLowestValueInList(List<double> listParam)
+        {
+            listParam.Remove(listParam.Min());
+        }
+
+        public List<double> ConvertStringListToDoubleList(List<string> listParam)
+        {
+            List<double> convertedList = new List<double>();
+
+            foreach (string stringToConvert in listParam)
+            {
+                if (double.TryParse(stringToConvert, out double convertedString))
+                {
+                    convertedList.Add(convertedString);
+
+                }
+            }
+            return convertedList;
+        }
+
     }
 }
