@@ -10,6 +10,11 @@ namespace LINQproblems
     {
         static void Main(string[] args)
         {
+            var words = new List<string>() { "the", "bike", "this", "it", "tenth", "mathematics" };
+            Strings s = new Strings();
+
+            words = s.GetWordsWithTH(words);
+            s.PrintNewList(words);
         }
     }
 }
